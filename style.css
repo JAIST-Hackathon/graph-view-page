@@ -1,0 +1,222 @@
+/* 基本的なリセットとフォント設定 */
+body {
+    margin: 0;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f7f6;
+    color: #333;
+    line-height: 1.6;
+}
+
+h1 {
+    text-align: center;
+    color: #2c3e50;
+    padding: 20px 0;
+    background-color: #ecf0f1;
+    border-bottom: 2px solid #bdc3c7;
+    margin-top: 0;
+}
+
+/* ローディングメッセージ */
+.loading {
+    text-align: center;
+    padding: 20px;
+    font-size: 1.1em;
+    color: #555;
+    background-color: #e0f2f7;
+    border-radius: 8px;
+    margin: 20px auto;
+    width: 80%;
+    max-width: 600px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* コントロール部分 */
+#control {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 20px;
+    background-color: #ffffff;
+    border-bottom: 1px solid #ddd;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.btns {
+    display: flex;
+    gap: 10px;
+}
+
+.btns button {
+    padding: 10px 20px;
+    font-size: 1em;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    background-color: #3498db;
+    color: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.btns button:hover {
+    background-color: #2980b9;
+    transform: translateY(-2px);
+}
+
+.btns button:active {
+    transform: translateY(0);
+}
+
+.slct {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.slct label {
+    font-weight: bold;
+    color: #555;
+}
+
+.slct select {
+    padding: 8px 12px;
+    font-size: 1em;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    cursor: pointer;
+    min-width: 250px; /* ドロップダウンの幅を確保 */
+}
+
+/* 情報表示エリア */
+.infoview {
+    display: flex;
+    flex-wrap: wrap; /* 小さい画面で折り返す */
+    justify-content: center;
+    gap: 30px;
+    padding: 30px;
+    max-width: 1200px;
+    margin: 20px auto;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+/* ネットワークグラフ */
+#network {
+    flex: 2; /* グラフがより多くのスペースを占めるように */
+    min-width: 400px; /* 最小幅を設定 */
+    height: 500px; /* グラフの高さを固定 */
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #fdfdfd;
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.05);
+}
+
+/* 情報テーブル */
+.table-container {
+    flex: 1; /* テーブルが残りのスペースを占めるように */
+    min-width: 300px; /* 最小幅を設定 */
+    background-color: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    overflow: hidden; /* 角丸を維持 */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+}
+
+.table-container table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table-container th,
+.table-container td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+}
+
+.table-container th {
+    background-color: #f2f2f2;
+    color: #333;
+    font-weight: 600;
+    width: 35%; /* 見出しの幅を調整 */
+}
+
+.table-container tr:last-child td {
+    border-bottom: none;
+}
+
+.table-container tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.table-container td {
+    color: #555;
+}
+
+/* レスポンシブデザイン */
+@media (max-width: 900px) {
+    .infoview {
+        flex-direction: column; /* 縦並びに変更 */
+        align-items: center;
+    }
+
+    #network,
+    .table-container {
+        width: 100%; /* 全幅を使用 */
+        max-width: 600px; /* 最大幅を設定して中央に寄せる */
+    }
+
+    #network {
+        height: 400px; /* 縦並びのときに少し高さを調整 */
+    }
+
+    #control {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .slct {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .slct select {
+        width: 100%;
+        min-width: unset;
+    }
+}
+
+@media (max-width: 500px) {
+    h1 {
+        font-size: 1.5em;
+        padding: 15px 0;
+    }
+
+    .btns {
+        flex-direction: column;
+        width: 80%;
+    }
+
+    .btns button {
+        width: 100%;
+    }
+
+    .slct {
+        width: 80%;
+    }
+
+    .loading {
+        font-size: 1em;
+        padding: 15px;
+    }
+
+    .table-container th,
+    .table-container td {
+        padding: 10px 12px;
+        font-size: 0.9em;
+    }
+}
