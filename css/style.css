@@ -310,33 +310,63 @@ main {
 }
 
 /* ================================================================
+   フッター
+   ================================================================ */
+#footer {
+    flex-shrink: 0;
+    text-align: right;
+    padding: 2px 12px;
+    background: #fff;
+    border-top: 1px solid #eee;
+}
+
+#footer a {
+    font-size: 0.7em;
+    color: #aaa;
+    text-decoration: none;
+}
+
+#footer a:hover {
+    color: #777;
+    text-decoration: underline;
+}
+
+/* ================================================================
    レスポンシブ
    ================================================================ */
 @media (max-width: 768px) {
     body {
-        height: auto;
-        overflow: auto;
+        height: 100vh;
+        height: 100dvh;
+        overflow: hidden;
     }
 
     main {
         flex-direction: column;
-        overflow: visible;
+        overflow: hidden;
     }
 
     #network {
-        height: 50vh;
-        min-height: 300px;
+        flex: 1;
+        min-height: 0;
     }
 
     #sidebar {
         width: 100%;
         border-left: none;
         border-top: 1px solid #e0e0e0;
+        max-height: 40vh;
+        overflow-y: auto;
+        flex-shrink: 0;
     }
 
     #toolbar {
-        gap: 8px;
-        padding: 8px 12px;
+        gap: 6px;
+        padding: 6px 10px;
+    }
+
+    .toolbar-title {
+        font-size: 0.8em;
     }
 
     .search-box input {
@@ -344,30 +374,110 @@ main {
     }
 
     #toolbar select {
-        max-width: 180px;
+        max-width: 200px;
+    }
+
+    .search-results {
+        width: calc(100vw - 20px);
+        left: auto;
+        right: 0;
     }
 }
 
 @media (max-width: 480px) {
     #toolbar {
-        flex-direction: column;
-        align-items: stretch;
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 4px 8px;
+        padding: 6px 8px;
+    }
+
+    .toolbar-title {
+        width: 100%;
+        margin-bottom: 0;
+        font-size: 0.75em;
     }
 
     .toolbar-group {
-        justify-content: stretch;
+        flex-shrink: 0;
+    }
+
+    /* 検索ボックスは残りスペースを埋める */
+    .toolbar-group.search-box {
+        flex: 1;
+        min-width: 0;
     }
 
     .search-box input {
         width: 100%;
+        min-width: 0;
+    }
+
+    /* 講義セレクトは全幅 */
+    .toolbar-class-select {
+        flex-basis: 100%;
     }
 
     #toolbar select {
-        max-width: 100%;
+        max-width: none;
+    }
+
+    #classSelect {
         width: 100%;
     }
 
     #toolbar button {
-        flex: 1;
+        padding: 5px 10px;
+        font-size: 0.8em;
+    }
+
+    #toolbar select {
+        font-size: 0.8em;
+        padding: 4px 6px;
+    }
+
+    .search-box input {
+        font-size: 0.8em;
+        padding: 4px 8px;
+    }
+
+    .search-results {
+        left: 0;
+        right: auto;
+        width: calc(100vw - 16px);
+    }
+
+    /* サイドバーをよりコンパクトに */
+    #sidebar {
+        max-height: 35vh;
+    }
+
+    .table-container th,
+    .table-container td {
+        padding: 5px 8px;
+        font-size: 0.8em;
+    }
+
+    .table-container th {
+        width: 30%;
+    }
+
+    .legend {
+        padding: 8px 10px;
+    }
+
+    .legend-title {
+        font-size: 0.75em;
+    }
+
+    .legend-item {
+        font-size: 0.72em;
+    }
+
+    /* vis-network ナビゲーションボタンを小さく */
+    #network .vis-navigation .vis-button {
+        width: 28px;
+        height: 28px;
     }
 }
